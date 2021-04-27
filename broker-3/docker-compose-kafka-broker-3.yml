@@ -1,0 +1,15 @@
+version: '2'
+services:
+  broker-3:
+    image: confluentinc/cp-kafka:4.0.0
+    container_name: broker-3
+    extra_hosts:
+      - "zookeeper_1:192.168.16.10"
+      - "zookeeper_2:192.168.16.20"
+      - "zookeeper_2:192.168.16.30"
+    env_file:
+      - ./kafka-broker-3.env
+    ports:
+      - 39092:39092
+    volumes:
+      - /home/ubuntu/kafka/broker_3/data:/var/lib/kafka/data
